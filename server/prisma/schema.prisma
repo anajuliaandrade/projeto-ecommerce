@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int        @id @default(autoincrement())
+  name         String
+  email        String     @unique
+  passwordHash String     @map("password_hash")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  favorites    Favorite[]
+
+  @@map("users")
+}
+
+model Favorite {
+  id               Int      @id @default(autoincrement())
+  userId           Int      @map("user_id")
+  productName      String   @map("product_name")
+  category         String
+  platform         String
+  title            String
+  shortDescription String   @map("short_description")
+  fullDescription  String   @map("full_description")
+  benefits         String[]
+  hashtags         String[]
+  adText           String   @map("ad_text")
+  createdAt        DateTime @default(now()) @map("created_at")
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("favorites")
+}
