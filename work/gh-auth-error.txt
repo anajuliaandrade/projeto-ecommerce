@@ -1,6 +1,0 @@
-
-! First copy your one-time code: E336-8BC7
-Open this URL to continue in your web browser: https://github.com/login/device
-failed to authenticate via web browser: Post "https://api.github.com/graphql": dial tcp 4.228.31.149:443: connectex: Uma tentativa de conexão falhou porque o componente conectado não respondeu
-corretamente após um período de tempo ou a conexão estabelecida falhou
-porque o host conectado não respondeu.
